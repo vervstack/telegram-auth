@@ -1,0 +1,29 @@
+name: branch-push
+run-name: ${{ github.ref_name }} pull request
+on:
+  push:
+    branches:
+      - "*"
+      - "!main"
+
+jobs:
+  build-and-check:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Type check
+        run: npm run type-check
+
+      - name: Build
+        run: npm run build
