@@ -46,6 +46,10 @@
     cursor: not-allowed;
 }
 
+.FullSize {
+    height: 100%;
+}
+
 .Icon {
     flex-shrink: 0;
 }

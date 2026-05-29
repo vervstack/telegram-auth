@@ -10,7 +10,9 @@ export interface TelegramSignInButtonProps {
     onClick: () => void
     disabled?: boolean
     lang?: "en" | "ru"
+    title?: string
     label?: string
+    fullSize?: boolean
     className?: string
 }
 
@@ -33,7 +35,9 @@ export function TelegramSignInButton({
     onClick,
     disabled,
     lang = "en",
+    title,
     label,
+    fullSize,
     className,
 }: TelegramSignInButtonProps) {
     useEffect(function () {
@@ -47,8 +51,8 @@ export function TelegramSignInButton({
         document.head.appendChild(link)
     }, [])
 
-    const text = label ?? LABELS[lang]
-    const cls = [s.TelegramSignInButtonContainer, className].filter(Boolean).join(" ")
+    const text = label ?? title ?? LABELS[lang]
+    const cls = [s.TelegramSignInButtonContainer, fullSize && s.FullSize, className].filter(Boolean).join(" ")
 
     return (
         <button type="button" className={cls} onClick={onClick} disabled={disabled}>

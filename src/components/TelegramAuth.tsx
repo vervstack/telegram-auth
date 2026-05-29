@@ -35,7 +35,7 @@ export function TelegramAuth({
             onClick={login}
             disabled={!isReady}
             lang={lang}
-            label={title}
+            title={title}
             className={className}
         />
     )
