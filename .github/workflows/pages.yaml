@@ -35,6 +35,9 @@ jobs:
       - name: Build demo
         run: npm run build:demo
 
+      - name: Write CNAME
+        run: echo "tg-demo.vervstack.ru" > dist-demo/CNAME
+
       - name: Configure Pages
         uses: actions/configure-pages@v5
 
