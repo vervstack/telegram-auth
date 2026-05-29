@@ -1,6 +1,6 @@
 {
   "name": "@vervstack/telegram-auth",
-  "version": "0.4.2",
+  "version": "0.4.3",
   "description": "React component and hook for Telegram OAuth Login SDK",
   "license": "MIT",
   "repository": {
