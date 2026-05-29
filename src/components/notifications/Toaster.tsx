@@ -11,9 +11,9 @@ export default function Toaster() {
     return (
         <div className={cls.ToastContainer}>
             <AnimatePresence>
-                {toasts.map((toast, idx) => (
+                {toasts.map((toast) => (
                     <motion.div
-                        key={idx}
+                        key={toast.id}
                         layout
                         initial={{opacity: 0, x: 100, y: 50}}
                         animate={{opacity: 1, x: 0, y: 0}}
@@ -28,7 +28,7 @@ export default function Toaster() {
     );
 }
 
-function Toast({title, description, isDismissable}: ToastProps) {
+function Toast({id, title, description, level, isDismissable}: ToastProps) {
     const [isLeaving, setIsLeaving] = useState(false);
     const toaster = useToaster();
 
@@ -41,17 +41,17 @@ function Toast({title, description, isDismissable}: ToastProps) {
     return (
         <div
             className={cn(cls.Toast, {
-                [cls.error]: title === 'Error',
-                [cls.warn]: title === 'Warn',
-                [cls.info]: title == undefined || title === 'Info',
+                [cls.error]: level === 'Error',
+                [cls.warn]: level === 'Warn',
+                [cls.info]: level == undefined || level === 'Info',
                 [cls.slideIn]: !isLeaving,
                 [cls.slideOut]: isLeaving,
             })}
         >
             <div>{title}</div>
             <div className={cls.Description}>{description}</div>
-            {isDismissable && (
-                <div className={cls.DismissButton} onClick={() => toaster.dismiss(title)}>
+            {isDismissable && id !== undefined && (
+                <div className={cls.DismissButton} onClick={() => toaster.dismiss(id)}>
                     &times;
                 </div>
             )}

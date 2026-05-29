@@ -1,6 +1,7 @@
 import {create} from "zustand";
 
 export interface Toast {
+    id?: number;
     title: string;
     description: string;
     level?: 'Error' | 'Warn' | 'Info';
@@ -10,28 +11,26 @@ export interface Toast {
 export interface ToasterStore {
     toasts: Toast[];
     bake: (t: Toast) => void;
-    dismiss: (title: string) => void;
+    dismiss: (id: number) => void;
 }
+
+let nextId = 0;
 
 export const useToaster = create<ToasterStore>((set, get) => ({
     toasts: [],
 
     bake: (newToast: Toast) => {
-        const existing = get().toasts.find((t: Toast) => t.title === newToast.title);
-        if (existing) {
-            console.error(`Toast with title "${newToast.title}" already exists`);
-            return;
-        }
-        set((state: ToasterStore) => ({toasts: [...state.toasts, newToast]}));
+        const id = nextId++;
+        set((state: ToasterStore) => ({toasts: [...state.toasts, {...newToast, id}]}));
 
         setTimeout(() => {
-            get().dismiss(newToast.title);
+            get().dismiss(id);
         }, 5000);
     },
 
-    dismiss: (title: string) => {
+    dismiss: (id: number) => {
         set((state) => ({
-            toasts: state.toasts.filter((t: Toast) => t.title !== title),
+            toasts: state.toasts.filter((t: Toast) => t.id !== id),
         }));
     },
 }));
