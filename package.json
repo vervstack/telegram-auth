@@ -25,6 +25,7 @@
     "build": "vite build",
     "dev": "vite build --watch",
     "demo": "vite",
+    "build:demo": "vite build --config vite.config.demo.ts",
     "type-check": "tsc --noEmit"
   },
   "peerDependencies": {

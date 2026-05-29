@@ -1,0 +1,51 @@
+.TelegramSignInButtonContainer {
+    --tg-blue: #2AABEE;
+    --tg-blue-2: #229ED9;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.625rem;
+    width: 100%;
+    padding: 1rem 1.375rem;
+    background: linear-gradient(180deg, var(--tg-blue) 0%, var(--tg-blue-2) 100%);
+    border: 0;
+    border-radius: 0.875rem;
+    color: #ffffff;
+    font-family: 'Comfortaa', sans-serif;
+    font-weight: 600;
+    font-size: 1rem;
+    letter-spacing: -0.005em;
+    cursor: pointer;
+    box-shadow:
+        inset 0 0.0625rem 0 rgba(255, 255, 255, 0.15),
+        0 0.75rem 2rem -0.75rem rgba(42, 171, 238, 0.55);
+    transition: transform 140ms ease, box-shadow 200ms ease, filter 160ms ease;
+}
+
+.TelegramSignInButtonContainer:hover {
+    transform: translateY(-0.0625rem);
+    box-shadow:
+        inset 0 0.0625rem 0 rgba(255, 255, 255, 0.18),
+        0 1.125rem 2.375rem -0.75rem rgba(42, 171, 238, 0.65);
+    filter: brightness(1.05);
+}
+
+.TelegramSignInButtonContainer:active {
+    transform: translateY(0);
+    filter: brightness(0.97);
+}
+
+.TelegramSignInButtonContainer:focus-visible {
+    outline: 0.125rem solid rgba(255, 255, 255, 0.8);
+    outline-offset: 0.125rem;
+}
+
+.TelegramSignInButtonContainer:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.Icon {
+    flex-shrink: 0;
+}
