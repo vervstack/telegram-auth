@@ -1,4 +1,7 @@
 export {TelegramAuth} from "./components/TelegramAuth"
+export {default as Toaster} from "./components/notifications/Toaster"
+export {useToaster} from "./hooks/toaster/useToaster"
+export type {Toast, ToasterStore} from "./hooks/toaster/useToaster"
 export {TelegramSignInButton} from "./components/TelegramSignInButton"
 export {useTelegramLogin} from "./hooks/useTelegramLogin"
 export type {TelegramAuthProps} from "./components/TelegramAuth"

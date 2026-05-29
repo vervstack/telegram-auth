@@ -16,17 +16,19 @@ export default defineConfig({
     build: {
         lib: {
             entry: resolve(__dirname, "src/index.ts"),
-            name: "TelegramAuth",
-            fileName: "telegram-auth",
+            name: "Chures",
+            fileName: "chures",
             formats: ["es", "umd"],
         },
         rollupOptions: {
-            external: ["react", "react-dom", "react/jsx-runtime"],
+            external: ["react", "react-dom", "react/jsx-runtime", "zustand", "framer-motion"],
             output: {
                 globals: {
                     react: "React",
                     "react-dom": "ReactDOM",
                     "react/jsx-runtime": "ReactJSXRuntime",
+                    zustand: "Zustand",
+                    "framer-motion": "FramerMotion",
                 },
             },
         },
