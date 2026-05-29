@@ -1,10 +1,12 @@
 import type {ReactNode} from "react"
 import type {TelegramAuthData} from "../types"
 import {useTelegramLogin} from "../hooks/useTelegramLogin"
+import {TelegramSignInButton} from "./TelegramSignInButton"
 
 export type TelegramAuthProps = {
     botId: string
     onSuccess: (data: TelegramAuthData) => void
+    lang?: "en" | "ru"
     title?: string
     redirectUri?: string
     requestAccess?: string
@@ -15,7 +17,8 @@ export type TelegramAuthProps = {
 export function TelegramAuth({
     botId,
     onSuccess,
-    title = "Sign in with Telegram",
+    lang,
+    title,
     redirectUri,
     requestAccess,
     children,
@@ -28,8 +31,12 @@ export function TelegramAuth({
     }
 
     return (
-        <button className={className} onClick={login} disabled={!isReady}>
-            {title}
-        </button>
+        <TelegramSignInButton
+            onClick={login}
+            disabled={!isReady}
+            lang={lang}
+            label={title}
+            className={className}
+        />
     )
 }

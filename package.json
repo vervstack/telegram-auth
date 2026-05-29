@@ -1,13 +1,13 @@
 {
   "name": "@vervstack/telegram-auth",
-  "version": "0.1.0",
+  "version": "0.3.0",
   "description": "React component and hook for Telegram OAuth Login SDK",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/AlexSkilled/telegram-auth"
+    "url": "https://github.com/vervstack/telegram-auth"
   },
-  "homepage": "https://github.com/AlexSkilled/telegram-auth#readme",
+  "homepage": "https://github.com/vervstack/telegram-auth#readme",
   "keywords": ["telegram", "react", "oauth", "login", "widget"],
   "type": "module",
   "main": "./dist/telegram-auth.umd.cjs",
@@ -24,6 +24,7 @@
   "scripts": {
     "build": "vite build",
     "dev": "vite build --watch",
+    "demo": "vite",
     "type-check": "tsc --noEmit"
   },
   "peerDependencies": {
